@@ -1,0 +1,171 @@
+.moldura-selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    min-height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+    box-sizing: border-box;
+    background: #f5f5f5; 
+  }
+  
+  .selection-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    color: #333;
+    margin: 1rem 0 2rem 0; 
+    text-align: center;
+    font-weight: 600; 
+  }
+  
+  .molduras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+    margin: 0 auto 2rem auto; 
+  }
+  
+  .moldura-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    border: 2px solid transparent; 
+  }
+  
+  .moldura-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+  }
+  
+  .moldura-option.selected {
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+    border: 3px solid #ff0000; 
+    position: relative;
+  }
+  
+  .moldura-option.selected::after {
+    content: "✓";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #ff0000;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .moldura-thumbnail {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    border: 1px solid #eee; 
+  }
+  
+  .moldura-name {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .selection-buttons {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .btn-voltar, .btn-confirmar {
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border: none;
+    flex: 1;
+    max-width: 200px; 
+    text-align: center;
+  }
+  
+  .btn-voltar {
+    background: #e0e0e0;
+    color: #333;
+  }
+  
+  .btn-voltar:hover {
+    background: #d0d0d0;
+  }
+  
+  .btn-confirmar {
+    background: #606060;
+    color: white;
+  }
+  
+  .btn-confirmar:hover:not(:disabled) {
+    background: #505050;
+    transform: translateY(-2px);
+  }
+  
+  .btn-confirmar:disabled {
+    background: #a0a0a0;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  /* Melhorias para mobile */
+  @media (max-width: 768px) {
+    .molduras-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .moldura-option {
+      padding: 0.8rem;
+    }
+    
+    .selection-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .btn-voltar, .btn-confirmar {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .molduras-grid {
+      grid-template-columns: 1fr;
+      max-width: 350px;
+    }
+    
+    .moldura-selection-container {
+      padding: 1rem 0.5rem;
+      justify-content: flex-start; 
+    }
+  }
