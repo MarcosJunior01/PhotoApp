@@ -91,7 +91,8 @@
 }
 
 .qr-code-image {
-  width: 83%;
+  margin-top:10px;
+  width: 100%;
   height: 80%;
   object-fit: contain; 
   position: absolute;
