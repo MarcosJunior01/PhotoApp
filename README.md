@@ -19,7 +19,7 @@ Na pasta screens é onde fica as telas e as funções gerais do app.
 
 
 # IMPORTAÇÕES (GIT IGNORE APLICADO NO NODE_MODULES - FRONTEND)
-
+Basta dar o comando "npm install" na frontend/app que instala a pasta com os modulos 
 
 # BIBLIOTECAS
 
