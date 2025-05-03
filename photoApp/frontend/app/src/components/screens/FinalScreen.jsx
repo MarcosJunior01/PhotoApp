@@ -44,7 +44,7 @@ function FinalScreen({ qrCode, photo, onFinish }) {
         <div className="obrigado-overlay">
           <div className="obrigado-content">
             <h2>Obrigado!</h2>
-            <h4>Ficamos felizes por usar no Totem!</h4>
+            <h4>Ficamos felizes por usar nosso Totem!</h4>
           </div>
         </div>
       )}
