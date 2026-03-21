@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/style.css';
 import './css/login.css';
 import logo from './img/logo.png';
@@ -10,16 +10,28 @@ function LoginScreen({ onBack, onAdminLoginSuccess }) {
     email: '',
     password: ''
   });
+  const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  // Ao montar, verifica se há credenciais salvas
+  useEffect(() => {
+    const savedEmail    = localStorage.getItem('admin_remember_email');
+    const savedPassword = localStorage.getItem('admin_remember_password');
+    if (savedEmail && savedPassword) {
+      try {
+        setFormData({ email: atob(savedEmail), password: atob(savedPassword) });
+        setRemember(true);
+      } catch {
+        localStorage.removeItem('admin_remember_email');
+        localStorage.removeItem('admin_remember_password');
+      }
+    }
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    // Limpar erro quando usuário começa a digitar
+    setFormData(prev => ({ ...prev, [name]: value }));
     if (error) setError('');
   };
 
@@ -38,33 +50,33 @@ function LoginScreen({ onBack, onAdminLoginSuccess }) {
       const apiBase = process.env.REACT_APP_API_URL || `${window.location.protocol}//${window.location.hostname}:3001`;
       const response = await fetch(`${apiBase}/auth/login`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: formData.email, password: formData.password })
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // Verificar se é admin
         if (data.user.role !== 'admin') {
           setError('Acesso negado. Apenas administradores podem fazer login aqui.');
           return;
         }
 
-        // Salvar dados do usuário e token
-        localStorage.setItem('user', JSON.stringify(data.user));
+        // Salvar ou limpar credenciais conforme "Lembrar"
+        if (remember) {
+          localStorage.setItem('admin_remember_email',    btoa(formData.email));
+          localStorage.setItem('admin_remember_password', btoa(formData.password));
+        } else {
+          localStorage.removeItem('admin_remember_email');
+          localStorage.removeItem('admin_remember_password');
+        }
+
+        localStorage.setItem('user',  JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
 
-        // Redirecionar para painel admin
         if (onAdminLoginSuccess) {
           onAdminLoginSuccess(data.user);
         } else {
-          // Fallback para redirecionamento direto
           window.location.href = '/admin/panel';
         }
       } else {
@@ -83,7 +95,7 @@ function LoginScreen({ onBack, onAdminLoginSuccess }) {
 
       <div className='login-header'>
         <div className='logo-box'>
-            <img className='logo' alt='logo' src={logo} />
+          <img className='logo' alt='logo' src={logo} />
         </div>
       </div>
 
@@ -116,17 +128,18 @@ function LoginScreen({ onBack, onAdminLoginSuccess }) {
         </div>
 
         {error && (
-          <div className='error-message'>
-            {error}
-          </div>
+          <div className='error-message'>{error}</div>
         )}
 
         <div className='login-options'>
           <label>
-            <input type='checkbox' />
+            <input
+              type='checkbox'
+              checked={remember}
+              onChange={e => setRemember(e.target.checked)}
+            />
             Lembrar
           </label>
-
           <span className='forgot'>Esqueci minha senha</span>
         </div>
 
@@ -144,16 +157,8 @@ function LoginScreen({ onBack, onAdminLoginSuccess }) {
         <div style={{ marginTop: '12px' }}>
           <a
             href='#'
-            onClick={(e) => {
-              e.preventDefault();
-              onBack();
-            }}
-            style={{
-              color: '#000',
-              textDecoration: 'underline',
-              fontSize: '0.9rem',
-              fontWeight: 'bold'
-            }}
+            onClick={(e) => { e.preventDefault(); onBack(); }}
+            style={{ color: '#000', textDecoration: 'underline', fontSize: '0.9rem', fontWeight: 'bold' }}
           >
             Voltar para login do promotor
           </a>
