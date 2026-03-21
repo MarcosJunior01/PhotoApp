@@ -40,7 +40,7 @@ DATABASE_URL=postgresql://...
 CLOUDINARY_CLOUD_NAME=...
 CLOUDINARY_API_KEY=...
 CLOUDINARY_API_SECRET=...
-FRONTEND_URL=http://192.168.x.x:3000
+FRONTEND_URL=http://192.168.x.x:3000 <-- SUPER IMPORTANTE VERIFICAR
 PORT=3001
 JWT_SECRET=sua-chave-secreta
 JWT_EXPIRES_IN=8h
@@ -215,6 +215,8 @@ LoginLocalScreen → HomeScreen → MolduraSelection → Câmera → Review → 
 ### Administrador
 ```
 QRCodeScreen (totem) → /admin/login (outro dispositivo) → AdminPanel → Logs / Cadastro
+
+O ADM tem a opção de abrir o painel dentro do totem ou remotamente scaneando o QR Code
 ```
 
 ---
