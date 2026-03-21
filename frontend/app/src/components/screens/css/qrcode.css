@@ -1,0 +1,83 @@
+.qr-container {
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+  padding: 40px 20px;
+}
+
+/* Header */
+.qr-header {
+  margin-top: 20px;
+}
+
+/* Área central */
+.qr-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Caixa do QR */
+.qr-box {
+  width: min(70vw, 350px);
+  height: min(70vw, 350px);
+  margin-top: 20px;
+  background: #ffffff;
+  border: 3px solid #1e1e1e;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Texto inferior */
+.qrInstruction {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222222;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.direct-login-link a{
+  font-size: 14px;
+  font-weight: bold;
+  color: #51005f;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+  .btn-voltar, .btn-gerar-qr, .btn-login-direto {
+    padding: 0.5rem 1.2rem;  
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;  
+    border: none;
+    flex: 1;
+    max-width: 200px;  
+    max-height: 120px;  
+    text-align: center;
+    background: #4c4c4c;
+    margin-bottom: 15px;
+  }
+  .btn-voltar:hover {
+    background: #d0d0d0;
+  }
+  .btn-gerar-qr {
+    background: #727a67;
+    color: white;
+  }
+  .btn-login-direto {
+    background: #667eea;
+    color: white;
+  }
+
+  .btn-voltar-text, .btn-gerar-qr-text, .btn-login-direto-text {
+    color: white;
+    font-size: 20px;
+  }

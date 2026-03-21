@@ -1,0 +1,121 @@
+.login-container {
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
+  position: relative; /* garante que o admin-icon absolute funcione */
+  align-items: center; /* centraliza tudo horizontalmente */
+}
+
+/* ─── ADMIN ICON — canto superior direito ─── */
+.admin-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: contain;
+  z-index: 10;
+}
+
+/* ─── HEADER / LOGO — centralizado ─── */
+.login-header {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.logo-box {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ─── TÍTULO ─── */
+.login-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 20px 0 30px 0;
+  color: #1e1e1e;
+  text-align: center;
+  width: 100%;
+}
+
+/* ─── FORM ─── */
+.login-form {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ─── INPUTS ─── */
+.input-group {
+  position: relative;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 40px 14px 12px;
+  border: none;
+  background: #1e1e1e;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.input-group input::placeholder {
+  color: #cfcfcf;
+}
+
+/* ─── ÍCONE DO INPUT — lado direito ─── */
+.input-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* ─── OPÇÕES ─── */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin: 10px 0 30px 0;
+  color: #555;
+}
+
+.login-options input {
+  margin-right: 5px;
+}
+
+.forgot {
+  cursor: pointer;
+}
+
+/* ─── BOTÃO ─── */
+.login-btn {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 0;
+  background: #7a7a7a;
+}

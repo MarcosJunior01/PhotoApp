@@ -1,0 +1,280 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  font-family: 'Arial', sans-serif;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  text-align: center;
+  overflow-x: hidden;
+  touch-action: manipulation;
+  position: relative;
+}
+
+/* ─── HEADER BAR ─── */
+/* Agora o div que envolve logout + admin-icon vira uma barra full-width */
+.content > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.admin-icon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: contain;
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid #606060;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: inherit;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.logout-btn:hover {
+  border-color: #ff4d6d;
+  color: #ff4d6d;
+  background: rgba(255, 77, 109, 0.08);
+}
+
+/* ─── LOGO ─── */
+.logo {
+  height: auto;
+  width: min(170px, 40vw);
+  max-height: 100px;
+  object-fit: contain;
+}
+
+
+/* ─── TEXTOS ─── */
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.texto-central {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 300;
+  margin: 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.texto-inferior {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 300;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+/* ─── BOTÃO INICIAR ─── */
+/* Em telas touch o botão fica maior e mais fácil de apertar */
+.btn-geral {
+  background: #606060;
+  color: white;
+  border: none;
+  padding: clamp(0.8rem, 3vw, 1rem) clamp(2rem, 10vw, 3.5rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  margin: 0.5rem auto;
+  width: auto;
+  max-width: 90vw;
+  white-space: nowrap;
+  display: block;
+}
+
+.btn-geral:hover {
+  background: #4d4c4c;
+  transform: translateY(-3px);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+/* ─── BOTÃO CÂMERA ─── */
+.btn-camera {
+  height: clamp(45px, 12vw, 60px);
+  width: clamp(45px, 12vw, 60px);
+  background-color: white;
+  border-radius: 50%;
+  border: solid clamp(3px, 1vw, 5px) gray;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-camera:hover {
+  border: solid clamp(4px, 1.2vw, 7px) red;
+  transform: translateY(-3px);
+  box-shadow: 0 0.2rem 0.5rem rgba(255, 0, 0, 0.3);
+}
+
+/* ─── BOTÃO REFAZER ─── */
+.btn-refazer {
+  background: #ffffff;
+  color: #606060;
+  border: solid 2px #606060;
+  padding: clamp(0.8rem, 3vw, 1rem) clamp(2rem, 10vw, 3.5rem);
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  width: auto;
+  max-width: 90vw;
+}
+
+.btn-refazer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/* ─── UPLOAD / REVIEW ─── */
+.uploading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.review-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.photo-preview-container {
+  position: relative;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.review-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  display: block;
+  border-radius: 5px;
+}
+
+.review-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+}
+
+.review-buttons {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+}
+
+/* ─── SPINNER ─── */
+.loading-spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #606060;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-top: 20px;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ─── TOUCH — botão iniciar maior e mais centralizado ─── */
+@media (hover: none) and (pointer: coarse) {
+  .btn-geral {
+    padding: 1.2rem 4rem;
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    min-width: 60vw;
+    margin: auto;
+  }
+
+  .logout-btn {
+    min-height: 44px;
+    padding: 10px 18px;
+  }
+
+  .content {
+    justify-content: space-between;
+  }
+}
+
+/* ─── TELAS BAIXAS (landscape mobile) ─── */
+@media (max-height: 600px) {
+  .content {
+    padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .texto-central {
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin: 0.2rem 0;
+  }
+}
+
+/* ─── PORTRAIT ─── */
+@media (orientation: portrait) {
+  .content {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* ─── TOTEM (telas altas, touch) ─── */
+@media (hover: none) and (pointer: coarse) and (min-height: 900px) {
+  .btn-geral {
+    padding: 1.4rem 5rem;
+    font-size: 1.3rem;
+    min-width: 55vw;
+    /* empurra para mais perto do centro vertical */
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .content {
+    /* cria espaços iguais acima e abaixo do botão dentro do flex */
+    justify-content: space-around;
+  }
+}

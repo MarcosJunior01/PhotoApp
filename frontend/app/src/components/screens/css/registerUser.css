@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+.ru-root {
+  --bg: #1d1d1d;;
+  --surface: #1d1d1d;
+  --surface-2: #141414;
+  --surface-3: #18181f;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --accent: #af25f0;
+  --accent-dim: rgba(213, 53, 241, 0.12);
+  --accent-glow: rgba(172, 53, 241, 0.25);
+  --text-primary: #f0f0f5;
+  --text-secondary: #8888a0;
+  --text-muted: #55555f;
+  --danger: #ff4d6d;
+  --success: #22c55e;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-glow: 0 0 40px rgba(210, 53, 241, 0.15);
+
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  position: fixed;
+  inset: 0;
+  overflow-y: auto;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(175, 37, 240, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 80%, rgba(100, 80, 200, 0.08) 0%, transparent 50%);
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.ru-root *,
+.ru-root *::before,
+.ru-root *::after {
+  box-sizing: border-box;
+}
+
+html:has(.ru-root),
+body:has(.ru-root) {
+  margin: 0;
+  padding: 0;
+  background: #0a0a0f;
+}
+
+/* ─── HEADER ─── */
+.ru-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 68px;
+  background: rgba(10, 10, 15, 0.351);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.ru-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ru-logo-icon {
+  margin-top: 25px;
+  width: 85px;
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  mask-image: url('../img/logo.png');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+}
+
+.ru-logo-text {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.ru-logo-text span {
+  color: var(--accent);
+}
+
+.ru-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ru-nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.ru-nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.ru-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.ru-logout-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: rgba(255, 77, 109, 0.08);
+}
+
+/* ─── MAIN ─── */
+.ru-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+/* ─── CARD ─── */
+.ru-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px 40px 36px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+
+.ru-card-header {
+  margin-bottom: 32px;
+}
+
+.ru-card-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin: 0 0 6px 0;
+}
+
+.ru-card-subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ─── FORM ─── */
+.ru-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ru-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.ru-field label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.ru-field input,
+.ru-field select {
+  height: 46px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+}
+
+.ru-field input:focus,
+.ru-field select:focus {
+  border-color: var(--accent);
+  background: var(--surface-3);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+.ru-field input::placeholder {
+  color: var(--text-muted);
+}
+
+.ru-field input.error {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.1);
+}
+
+.ru-field-error {
+  font-size: 12px;
+  color: var(--danger);
+  margin: 0;
+}
+
+/* select arrow */
+.ru-field select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+/* role cards */
+.ru-role-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.ru-role-option {
+  position: relative;
+}
+
+.ru-role-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ru-role-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 16px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: center;
+  height: 80px;
+}
+
+.ru-role-label:hover {
+  border-color: var(--border-hover);
+  background: var(--surface-3);
+}
+
+.ru-role-option input[type="radio"]:checked + .ru-role-label {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.ru-role-icon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.ru-role-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+.ru-role-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+/* ─── DIVIDER ─── */
+.ru-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+/* ─── SUBMIT ─── */
+.ru-submit-btn {
+  height: 48px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.ru-submit-btn:hover:not(:disabled) {
+  background: #a952e4;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.ru-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ─── FEEDBACK ─── */
+.ru-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.ru-alert-error {
+  background: rgba(255, 77, 109, 0.1);
+  border: 1px solid rgba(255, 77, 109, 0.25);
+  color: #ff8099;
+}
+
+.ru-alert-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  color: #4ade80;
+}
+
+.ru-alert-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─── SPINNER ─── */
+.ru-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: ruSpin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes ruSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 540px) {
+  .ru-header {
+    padding: 0 20px;
+    height: 60px;
+  }
+
+  .ru-main {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .ru-card {
+    padding: 28px 20px 24px;
+    border-radius: var(--radius-lg);
+  }
+
+  .ru-card-title {
+    font-size: 20px;
+  }
+}
+
+/* ─── TOUCH ─── */
+@media (hover: none) and (pointer: coarse) {
+  .ru-field input,
+  .ru-field select {
+    height: 52px;
+    font-size: 16px;
+  }
+
+  .ru-submit-btn {
+    height: 54px;
+    font-size: 15px;
+  }
+
+  .ru-role-label {
+    height: 88px;
+    padding: 18px 12px;
+  }
+
+  .ru-nav-btn,
+  .ru-logout-btn {
+    min-height: 44px;
+  }
+}
